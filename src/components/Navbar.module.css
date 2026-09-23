@@ -37,20 +37,23 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: var(--accent);
+  background: var(--gradient);
   border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(var(--accent-rgb), 0.35);
   color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
 }
 
 .nav {
+  position: relative;
   display: flex;
   gap: 1.5rem;
   align-items: center;
 }
 
 .navLink {
+  position: relative;
   color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
@@ -68,6 +71,17 @@
   font-weight: 600;
 }
 
+.activeIndicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 2px;
+  transition: transform 0.3s ease, width 0.3s ease;
+  pointer-events: none;
+}
+
 .themeToggle {
   display: flex;
   align-items: center;
@@ -77,7 +91,6 @@
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--card-bg);
-  font-size: 1rem;
   transition: border-color 0.2s ease, transform 0.2s ease;
   margin-left: 0.25rem;
   cursor: pointer;
@@ -88,12 +101,121 @@
   transform: scale(1.05);
 }
 
-@media (max-width: 640px) {
+.iconWrap {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.sunIcon,
+.moonIcon {
+  position: absolute;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.sunIcon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #f5a524;
+}
+
+.moonIcon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+  color: #8b919e;
+}
+
+.iconWrap.isDark .sunIcon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+.iconWrap.isDark .moonIcon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #e8eaed;
+}
+
+.mobileControls {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.menuToggle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-primary);
+  transition: transform 0.25s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.menuToggle.menuOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuToggle.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggle.menuOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 720px) {
   .nav {
-    gap: 0.75rem;
+    display: none;
   }
 
-  .navLink {
-    font-size: 0.82rem;
+  .mobileControls {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1.5rem 1.25rem;
+    border-top: 1px solid var(--border);
+    background: var(--nav-bg);
+    animation: slideDown 0.2s ease-out;
+  }
+
+  .mobileNavLink {
+    padding: 0.85rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobileNavLink:last-child {
+    border-bottom: none;
+  }
+
+  .mobileNavLink.active {
+    color: var(--accent);
+    font-weight: 600;
   }
 }

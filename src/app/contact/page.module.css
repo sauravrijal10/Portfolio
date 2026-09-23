@@ -23,6 +23,13 @@
   padding: 2rem;
 }
 
+.formTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -61,6 +68,33 @@
   border-color: var(--accent);
 }
 
+.statusMessage {
+  margin-top: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.statusSuccess {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.statusError {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
 .contactInfo {
   display: flex;
   flex-direction: column;
@@ -78,6 +112,16 @@
 .infoBlock p {
   color: var(--text-secondary);
   font-size: 1rem;
+}
+
+.emailLink {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.emailLink:hover {
+  color: var(--accent);
 }
 
 .socialLinks {

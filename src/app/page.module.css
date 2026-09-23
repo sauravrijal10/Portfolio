@@ -7,50 +7,189 @@
 }
 
 .hero {
-  text-align: center;
-  max-width: 680px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  margin-top: 3rem;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 2rem;
 }
 
-.tagline {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  margin-bottom: 1rem;
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.1rem;
 }
 
 .accent {
-  color: var(--accent);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.heroSubtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 2rem;
 }
 
 .ctaContainer {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 0.5rem;
+}
+
+.statsRow {
+  display: flex;
+  gap: 2.25rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.statValue {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ===== Hero visual: terminal card ===== */
+.heroVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.terminal {
+  width: 100%;
+  max-width: 380px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: rotate(1.5deg);
+  transition: transform 0.3s ease;
+}
+
+.terminal:hover {
+  transform: rotate(0deg);
+}
+
+.terminalBar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.dot[data-color="red"] {
+  background: #ff5f57;
+}
+
+.dot[data-color="yellow"] {
+  background: #febc2e;
+}
+
+.dot[data-color="green"] {
+  background: #28c840;
+}
+
+.terminalBody {
+  padding: 1.25rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.terminalLine {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: lineIn 0.35s ease-out;
+}
+
+.terminalPrompt {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.terminalCheck {
+  color: var(--success);
+  display: inline-block;
+  width: 1rem;
+}
+
+.typingCursor {
+  display: inline-block;
+  width: 6px;
+  height: 1em;
+  margin-left: 2px;
+  background: var(--text-secondary);
+  vertical-align: text-bottom;
+  animation: blink 0.9s step-end infinite;
+}
+
+.terminalCursor .terminalPrompt::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 1em;
+  margin-left: 0.4rem;
+  background: var(--text-secondary);
+  vertical-align: text-bottom;
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes lineIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .techStack {
   width: 100%;
+  max-width: 1100px;
   text-align: center;
-}
-
-.techTitle {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
 }
 
 .techGrid {
@@ -60,8 +199,42 @@
   gap: 0.75rem;
 }
 
-@media (max-width: 768px) {
-  .heroTitle {
-    font-size: 2.5rem;
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .heroCopy {
+    align-items: center;
+    text-align: center;
+  }
+
+  .heroSubtitle {
+    max-width: 560px;
+  }
+
+  .heroVisual {
+    order: -1;
+  }
+
+  .terminal {
+    max-width: 420px;
+    transform: none;
+  }
+
+  .statsRow {
+    justify-content: center;
+  }
+
+  .stat {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsRow {
+    gap: 1.5rem;
   }
 }

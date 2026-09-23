@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -16,8 +16,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Saurav Rijal — Backend Developer",
-  description: "Portfolio of Saurav Rijal — Backend Developer",
+  title: "Saurav Rijal — Software Engineer",
+  description: "Portfolio of Saurav Rijal, a software engineer specializing in scalable APIs, microservices, web applications, and cloud infrastructure.",
+  openGraph: {
+    title: "Saurav Rijal — Software Engineer",
+    description: "Portfolio of Saurav Rijal, a software engineer specializing in scalable APIs, microservices, web applications, and cloud infrastructure.",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f4fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a14" },
+  ],
 };
 
 export default function RootLayout({
@@ -26,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" data-theme="light" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <ThemeProvider>
           <Navbar />

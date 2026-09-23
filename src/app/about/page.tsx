@@ -1,45 +1,35 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import styles from './page.module.css';
+import { useReveal } from '@/hooks/useReveal';
 
-function ExperienceItem({ title, company, date, points }: { title: string, company: string, date: string, points: string[] }) {
+function ExperienceItem({ title, company, date, points, index }: Readonly<{ title: string, company: string, date: string, points: string[], index: number }>) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className={styles.timelineItem}>
+    <div className={styles.timelineItem} style={{ '--i': index } as CSSProperties}>
       <div className={styles.timelineDot}></div>
       <div className={`${styles.timelineContent} card`}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div className={styles.timelineHeader}>
           <div>
             <h3>{title}</h3>
             <span className={styles.company}>{company}</span>
             <span className={styles.date}>{date}</span>
           </div>
-          <button 
-            onClick={() => setExpanded(!expanded)} 
+          <button
+            onClick={() => setExpanded(!expanded)}
             className={styles.viewMoreBtn}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--accent)',
-              cursor: 'pointer',
-              fontSize: '0.9rem',
-              fontWeight: '600',
-              padding: 0,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.25rem'
-            }}
+            aria-expanded={expanded}
           >
             {expanded ? 'View Less ▲' : 'View More ▼'}
           </button>
         </div>
-        
+
         {expanded && (
-          <ul className={styles.bulletList} style={{ marginTop: '1rem' }}>
-            {points.map((point, index) => (
-              <li key={index}>{point}</li>
+          <ul className={styles.bulletList}>
+            {points.map((point) => (
+              <li key={point}>{point}</li>
             ))}
           </ul>
         )}
@@ -48,21 +38,43 @@ function ExperienceItem({ title, company, date, points }: { title: string, compa
   );
 }
 
+const competencyGroups = [
+  {
+    title: 'Languages & Frameworks',
+    skills: ['Python', 'Django', 'Java', 'Spring Boot'],
+  },
+  {
+    title: 'Architecture & APIs',
+    skills: ['Microservices', 'gRPC', 'REST APIs'],
+  },
+  {
+    title: 'Infrastructure & Tooling',
+    skills: ['PostgreSQL', 'AWS', 'Docker', 'CI/CD', 'Git'],
+  },
+];
+
 export default function About() {
+  const { ref: timelineRef, visible: timelineVisible } = useReveal<HTMLDivElement>();
+  const { ref: competencyRef, visible: competencyVisible } = useReveal<HTMLDivElement>();
+
   return (
     <div className={styles.container}>
       <h1 className="pageTitle animate-fade-in">About Me</h1>
       <p className="pageSubtitle animate-fade-in delay-100">
-        I am a backend-focused developer with expertise in building scalable APIs, microservices, and cloud-native applications.
+        I am a software engineer with expertise in building scalable APIs, microservices, web applications, and cloud-native systems.
         I thrive on solving complex problems through clean architecture and DevOps best practices.
       </p>
 
       <div className={styles.content}>
-        <section className="animate-fade-in delay-200">
+        <section>
           <h2 className="sectionTitle">Experience</h2>
 
-          <div className={styles.timeline}>
-            <ExperienceItem 
+          <div
+            ref={timelineRef}
+            className={`${styles.timeline} reveal-stagger ${timelineVisible ? 'reveal-visible' : ''}`}
+          >
+            <ExperienceItem
+              index={0}
               title="Software Engineer"
               company="Navya Advisors Limited — Lazimpat, Kathmandu"
               date="Jan 2026 - Present"
@@ -73,8 +85,9 @@ export default function About() {
                 "Developed secure payment workflows including payment verification, callback handling, and transaction status management."
               ]}
             />
-            
-            <ExperienceItem 
+
+            <ExperienceItem
+              index={1}
               title="Backend Engineer"
               company="Speedhome — Kuala Lumpur, Malaysia"
               date="July 2024 - April 2025"
@@ -89,7 +102,8 @@ export default function About() {
               ]}
             />
 
-            <ExperienceItem 
+            <ExperienceItem
+              index={2}
               title="Backend Engineer"
               company="Digi Dolphins — Kaushaltar, Bhaktapur"
               date="Jan 2024 - July 2024"
@@ -102,7 +116,8 @@ export default function About() {
               ]}
             />
 
-            <ExperienceItem 
+            <ExperienceItem
+              index={3}
               title="Backend Intern"
               company="Digi Dolphins — Kaushaltar, Bhaktapur"
               date="Oct 2023 - Jan 2024"
@@ -117,11 +132,21 @@ export default function About() {
           </div>
         </section>
 
-        <section className="animate-fade-in delay-300">
+        <section>
           <h2 className="sectionTitle">Core Competencies</h2>
-          <div className={styles.skillsGrid}>
-            {['Python', 'Django', 'Java', 'Spring Boot', 'gRPC', 'Microservices', 'REST APIs', 'PostgreSQL', 'AWS', 'Docker', 'CI/CD', 'Git'].map((skill) => (
-              <span key={skill} className="badge">{skill}</span>
+          <div
+            ref={competencyRef}
+            className={`${styles.competencyGroups} reveal-stagger ${competencyVisible ? 'reveal-visible' : ''}`}
+          >
+            {competencyGroups.map((group, i) => (
+              <div key={group.title} className={styles.competencyGroup} style={{ '--i': i } as CSSProperties}>
+                <h3 className={styles.competencyGroupTitle}>{group.title}</h3>
+                <div className={styles.skillsGrid}>
+                  {group.skills.map((skill) => (
+                    <span key={skill} className="badge">{skill}</span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>

@@ -45,12 +45,13 @@ export default function Contact() {
     <div className={styles.container}>
       <h1 className="pageTitle animate-fade-in">Get in Touch</h1>
       <p className="pageSubtitle animate-fade-in delay-100">
-        Looking for a backend developer to build your APIs, set up cloud infrastructure, or streamline your DevOps?
+        Looking for a software engineer to build your APIs and applications, set up cloud infrastructure, or streamline your DevOps?
         Let&apos;s connect — I&apos;m always open to new challenges and collaborations.
       </p>
 
       <div className={`${styles.content} animate-fade-in delay-200`}>
         <div className={`${styles.formContainer} card`}>
+          <h2 className={styles.formTitle}>Send a Message</h2>
           <form ref={form} onSubmit={sendEmail} className={styles.form}>
             <div className={styles.inputGroup}>
               <label htmlFor="name">Name</label>
@@ -68,24 +69,29 @@ export default function Contact() {
             </div>
 
             <button type="submit" className="btnPrimary" disabled={isSubmitting}>
+              {isSubmitting && <span className={styles.spinner}></span>}
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
-            {statusMessage && <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: statusMessage.includes('successfully') ? 'var(--accent)' : 'red' }}>{statusMessage}</p>}
+            {statusMessage && (
+              <p className={`${styles.statusMessage} ${statusMessage.includes('successfully') ? styles.statusSuccess : styles.statusError} animate-fade-in`}>
+                {statusMessage}
+              </p>
+            )}
           </form>
         </div>
 
         <div className={styles.contactInfo}>
           <div className={styles.infoBlock}>
             <h3>Email</h3>
-            <p>hello@example.com</p>
+            <a href="mailto:sauravrijal1011@gmail.com" className={styles.emailLink}>sauravrijal1011@gmail.com</a>
           </div>
 
           <div className={styles.infoBlock}>
             <h3>Socials</h3>
             <div className={styles.socialLinks}>
-              <a href="https://twitter.com">Twitter</a>
-              <a href="https://github.com">GitHub</a>
-              <a href="https://linkedin.com">LinkedIn</a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
             </div>
           </div>
         </div>
