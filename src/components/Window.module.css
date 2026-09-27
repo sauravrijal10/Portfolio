@@ -1,0 +1,59 @@
+.window {
+  padding: 3px;
+  color: var(--text-primary);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 2px 3px 2px 5px;
+  background: linear-gradient(90deg, var(--title-from), var(--title-to));
+  color: var(--title-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.inactive {
+  background: linear-gradient(90deg, var(--title-inactive-from), var(--title-inactive-to));
+  color: var(--title-inactive-text);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.controls {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 14px;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.control:last-child {
+  margin-left: 2px;
+}
+
+.body {
+  padding: 1rem;
+}

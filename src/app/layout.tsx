@@ -1,22 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Comic_Neue, Pixelify_Sans, VT323 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const pixelify = Pixelify_Sans({
+  variable: "--font-pixel",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const comicNeue = Comic_Neue({
+  variable: "--font-comic-neue",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
+const vt323 = VT323({
+  variable: "--font-vt323",
+  weight: "400",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Saurav Rijal — Software Engineer",
+  title: {
+    template: "%s :: Saurav Rijal's Home Page",
+    default: "★ Welcome to Saurav Rijal's Home Page! ★",
+  },
   description: "Portfolio of Saurav Rijal, a software engineer specializing in scalable APIs, microservices, web applications, and cloud infrastructure.",
   openGraph: {
     title: "Saurav Rijal — Software Engineer",
@@ -27,8 +37,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f4fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a14" },
+    { media: "(prefers-color-scheme: light)", color: "#008080" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
 };
 
@@ -38,11 +48,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" data-theme="light" data-scroll-behavior="smooth" className={`${pixelify.variable} ${comicNeue.variable} ${vt323.variable}`}>
       <body>
         <ThemeProvider>
           <Navbar />
-          <main style={{ paddingTop: '6rem', flex: 1, display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '4rem', minHeight: 'calc(100vh - 6rem)' }}>
+          <main className="page">
             {children}
           </main>
           <Footer />

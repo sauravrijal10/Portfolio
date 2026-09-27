@@ -3,38 +3,36 @@
 import { useState, type CSSProperties } from 'react';
 import styles from './page.module.css';
 import { useReveal } from '@/hooks/useReveal';
+import Window from '@/components/Window';
 
 function ExperienceItem({ title, company, date, points, index }: Readonly<{ title: string, company: string, date: string, points: string[], index: number }>) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className={styles.timelineItem} style={{ '--i': index } as CSSProperties}>
-      <div className={styles.timelineDot}></div>
-      <div className={`${styles.timelineContent} card`}>
-        <div className={styles.timelineHeader}>
-          <div>
-            <h3>{title}</h3>
-            <span className={styles.company}>{company}</span>
-            <span className={styles.date}>{date}</span>
-          </div>
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className={styles.viewMoreBtn}
-            aria-expanded={expanded}
-          >
-            {expanded ? 'View Less ▲' : 'View More ▼'}
-          </button>
+    <fieldset className={styles.groupBox} style={{ '--i': index } as CSSProperties}>
+      <legend className={styles.legend}>{date}</legend>
+      <div className={styles.jobHeader}>
+        <div>
+          <h3 className={styles.jobTitle}>{title}</h3>
+          <span className={styles.company}>{company}</span>
         </div>
-
-        {expanded && (
-          <ul className={styles.bulletList}>
-            {points.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-        )}
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="btnSecondary"
+          aria-expanded={expanded}
+        >
+          {expanded ? '[−] Less' : '[+] More'}
+        </button>
       </div>
-    </div>
+
+      {expanded && (
+        <ul className={styles.bulletList}>
+          {points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      )}
+    </fieldset>
   );
 }
 
@@ -55,20 +53,18 @@ const competencyGroups = [
 
 export default function About() {
   const { ref: timelineRef, visible: timelineVisible } = useReveal<HTMLDivElement>();
-  const { ref: competencyRef, visible: competencyVisible } = useReveal<HTMLDivElement>();
+  const { ref: competencyRef, visible: competencyVisible } = useReveal<HTMLTableSectionElement>();
 
   return (
     <div className={styles.container}>
-      <h1 className="pageTitle animate-fade-in">About Me</h1>
+      <h1 className="pageTitle animate-fade-in">All About Me!</h1>
       <p className="pageSubtitle animate-fade-in delay-100">
         I am a software engineer with expertise in building scalable APIs, microservices, web applications, and cloud-native systems.
         I thrive on solving complex problems through clean architecture and DevOps best practices.
       </p>
 
       <div className={styles.content}>
-        <section>
-          <h2 className="sectionTitle">Experience</h2>
-
+        <Window title="My Work History" icon="💼" className="animate-fade-in delay-200">
           <div
             ref={timelineRef}
             className={`${styles.timeline} reveal-stagger ${timelineVisible ? 'reveal-visible' : ''}`}
@@ -130,26 +126,29 @@ export default function About() {
               ]}
             />
           </div>
-        </section>
+        </Window>
 
-        <section>
-          <h2 className="sectionTitle">Core Competencies</h2>
-          <div
-            ref={competencyRef}
-            className={`${styles.competencyGroups} reveal-stagger ${competencyVisible ? 'reveal-visible' : ''}`}
-          >
-            {competencyGroups.map((group, i) => (
-              <div key={group.title} className={styles.competencyGroup} style={{ '--i': i } as CSSProperties}>
-                <h3 className={styles.competencyGroupTitle}>{group.title}</h3>
-                <div className={styles.skillsGrid}>
-                  {group.skills.map((skill) => (
-                    <span key={skill} className="badge">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Window title="My Skills" icon="⭐" inactive>
+          <table className={styles.competencyTable}>
+            <tbody
+              ref={competencyRef}
+              className={`reveal-stagger ${competencyVisible ? 'reveal-visible' : ''}`}
+            >
+              {competencyGroups.map((group, i) => (
+                <tr key={group.title} style={{ '--i': i } as CSSProperties}>
+                  <th scope="row">{group.title}</th>
+                  <td>
+                    <div className={styles.skillsGrid}>
+                      {group.skills.map((skill) => (
+                        <span key={skill} className="badge">{skill}</span>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Window>
       </div>
     </div>
   );

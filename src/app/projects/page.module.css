@@ -1,89 +1,55 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  flex: 1;
+  gap: 1rem;
 }
 
 .projectGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1.25rem;
+  margin-top: 0.5rem;
 }
 
 .projectCard {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardBody {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 260px;
-  overflow: hidden;
-}
-
-.cardAccent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transform: scaleX(0.35);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-
-.projectCard:hover .cardAccent {
-  transform: scaleX(1);
-}
-
-.cardHeader {
-  margin-bottom: 1.5rem;
-  margin-top: 0.25rem;
+  gap: 1.25rem;
 }
 
 .projectTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
-  transition: color 0.2s ease;
-}
-
-.projectCard:hover .projectTitle {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--accent);
+  margin-bottom: 0.5rem;
 }
 
 .projectDesc {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 0.95rem;
+  line-height: 1.55;
+  font-size: 1rem;
+  color: var(--text-primary);
 }
 
 .cardFooter {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  border-top: 2px groove var(--face-light);
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.viewLink {
-  display: inline-flex;
-  align-items: center;
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: gap 0.2s ease, opacity 0.2s ease;
-  cursor: pointer;
-}
-
-.viewLink:hover {
-  gap: 0.35rem;
-  opacity: 0.85;
+  gap: 0.4rem;
 }
