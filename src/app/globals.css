@@ -1,72 +1,89 @@
 @import "tailwindcss";
 
-/* ===== Light Theme (default) ===== */
+/* ===== Day Theme (default): Win95 teal desktop, 16-colour palette ===== */
 :root {
-  --bg-primary: #f5f4fb;
-  --bg-secondary: #ebe9f6;
-  --bg-white: #ffffff;
-  --text-primary: #1b1836;
-  --text-secondary: #5b5877;
-  --accent: #7c3aed;
-  --accent-hover: #6d28d9;
-  --accent-light: rgba(124, 58, 237, 0.09);
-  --accent-rgb: 124, 58, 237;
-  --accent-2: #06b6d4;
-  --accent-2-rgb: 6, 182, 212;
-  --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
-  --gradient-btn: linear-gradient(135deg, #6d28d9 0%, #0e7490 100%);
-  --success: #1f9d55;
-  --success-light: rgba(31, 157, 85, 0.1);
-  --error: #dc2626;
-  --error-light: rgba(220, 38, 38, 0.1);
-  --border: #ddd9ee;
-  --card-bg: #ffffff;
-  --card-hover: #faf9ff;
-  --input-bg: #ffffff;
-  --nav-bg: rgba(255, 255, 255, 0.88);
-  --shadow-sm: 0 1px 4px rgba(27, 24, 54, 0.06);
-  --shadow-md: 0 4px 16px rgba(27, 24, 54, 0.09);
-  --shadow-lg: 0 12px 32px rgba(27, 24, 54, 0.14);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --container-max: 1100px;
+  --desktop: #008080;
+  --desktop-pattern: rgba(0, 0, 0, 0.07);
+  --face: #c0c0c0;
+  --face-dark: #808080;
+  --face-darker: #000000;
+  --face-light: #dfdfdf;
+  --face-lighter: #ffffff;
+  --paper: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #000080;
+  --title-from: #000080;
+  --title-to: #1084d0;
+  --title-text: #ffffff;
+  --title-inactive-from: #808080;
+  --title-inactive-to: #b5b5b5;
+  --title-inactive-text: #f0f0f0;
+  --link: #0000ff;
+  --link-visited: #800080;
+  --link-active: #ff0000;
+  --accent: #cc0000;
+  --accent-2: #0000ff;
+  --highlight: #ffff00;
+  --hot: #ff00ff;
+  --success: #008000;
+  --error: #cc0000;
+  --dos-bg: #000000;
+  --dos-text: #c0c0c0;
+  --dos-bright: #ffff00;
+  --on-desktop: #ffffff;
+  --heading-face: #ffff00;
+  --heading-ext-1: #ff8000;
+  --heading-ext-2: #ff0000;
+  --heading-ext-3: #800000;
+  --sparkle-1: #ffffff;
+  --sparkle-2: #ff00ff;
 }
 
-/* ===== Dark Theme ===== */
+/* ===== Night Theme: black starfield, neon everything ===== */
 [data-theme="dark"] {
-  --bg-primary: #0a0a14;
-  --bg-secondary: #141426;
-  --bg-white: #10101d;
-  --text-primary: #ececf7;
-  --text-secondary: #9c9db6;
-  --accent: #8b5cf6;
-  --accent-hover: #a78bfa;
-  --accent-light: rgba(139, 92, 246, 0.15);
-  --accent-rgb: 139, 92, 246;
-  --accent-2: #22d3ee;
-  --accent-2-rgb: 34, 211, 238;
-  --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
-  --gradient-btn: linear-gradient(135deg, #7c3aed 0%, #0891b2 100%);
-  --success: #3ecf72;
-  --success-light: rgba(62, 207, 114, 0.1);
-  --error: #f56565;
-  --error-light: rgba(245, 101, 101, 0.12);
-  --border: #26263f;
-  --card-bg: #10101d;
-  --card-hover: #171728;
-  --input-bg: #10101d;
-  --nav-bg: rgba(10, 10, 20, 0.85);
-  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --desktop: #000000;
+  --desktop-pattern: transparent;
+  --face: #2b2b3a;
+  --face-dark: #15151f;
+  --face-darker: #000000;
+  --face-light: #444458;
+  --face-lighter: #666680;
+  --paper: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #00ffff;
+  --title-from: #800080;
+  --title-to: #ff00ff;
+  --title-text: #ffffff;
+  --title-inactive-from: #202030;
+  --title-inactive-to: #404058;
+  --title-inactive-text: #c8c8d4;
+  --link: #00ffff;
+  --link-visited: #ff66ff;
+  --link-active: #ffff00;
+  --accent: #00ff00;
+  --accent-2: #ffff00;
+  --highlight: #ffff00;
+  --hot: #ff00ff;
+  --success: #00ff00;
+  --error: #ff3333;
+  --dos-bg: #000000;
+  --dos-text: #00ff00;
+  --dos-bright: #ffff00;
+  --on-desktop: #ffff00;
+  --heading-face: #00ffff;
+  --heading-ext-1: #ff00ff;
+  --heading-ext-2: #c000c0;
+  --heading-ext-3: #600060;
+  --sparkle-1: #ffff00;
+  --sparkle-2: #00ff00;
 }
 
 @theme inline {
-  --color-background: var(--bg-primary);
+  --color-background: var(--desktop);
   --color-foreground: var(--text-primary);
-  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-pixel), Tahoma, Verdana, "MS Sans Serif", sans-serif;
+  --font-comic: var(--font-comic-neue), "Comic Sans MS", "Chalkboard SE", cursive;
+  --font-mono: var(--font-vt323), "Courier New", Courier, monospace;
 }
 
 * {
@@ -80,19 +97,34 @@ html, body {
   overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  background: var(--bg-primary);
+  /* Checkerboard dither, like a 16-colour desktop wallpaper */
+  background-color: var(--desktop);
+  background-image:
+    linear-gradient(45deg, var(--desktop-pattern) 25%, transparent 25%, transparent 75%, var(--desktop-pattern) 75%),
+    linear-gradient(45deg, var(--desktop-pattern) 25%, transparent 25%, transparent 75%, var(--desktop-pattern) 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
   color: var(--text-primary);
   font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Twinkly starfield instead of the checkerboard at night */
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #ffffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 90px 120px, #ffff00 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 160px 60px, #ffffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 230px 190px, #00ffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 60px 220px, #ffffff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 270px 20px, #ff66ff 50%, transparent 51%);
+  background-size: 300px 250px;
+  background-position: 0 0;
 }
 
 button {
@@ -102,176 +134,235 @@ button {
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+  color: var(--link);
+  text-decoration: underline;
   cursor: pointer;
 }
 
+a:visited {
+  color: var(--link-visited);
+}
+
+a:active {
+  color: var(--link-active);
+}
+
 ::selection {
-  background: rgba(var(--accent-rgb), 0.85);
+  background: var(--title-from);
   color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 1px dotted var(--text-primary);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
 }
 
-/* ===== Gradient text ===== */
-.gradientText {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+/* ===== Page shell ===== */
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* ===== Kicker / eyebrow ===== */
-.kicker {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  margin-bottom: 1rem;
+/* ===== Bevels ===== */
+.raised {
+  background: var(--face);
+  box-shadow:
+    inset -1px -1px var(--face-darker),
+    inset 1px 1px var(--face-lighter),
+    inset -2px -2px var(--face-dark),
+    inset 2px 2px var(--face-light);
 }
 
-/* ===== Page Heading ===== */
+.sunken {
+  box-shadow:
+    inset -1px -1px var(--face-lighter),
+    inset 1px 1px var(--face-dark),
+    inset -2px -2px var(--face-light),
+    inset 2px 2px var(--face-darker);
+}
+
+/* ===== WordArt page heading: 3D block letters with sparkles ===== */
 .pageTitle {
-  font-size: clamp(2rem, 1.6rem + 1.8vw, 2.75rem);
+  font-family: var(--font-sans);
+  font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: 0.85rem;
+  line-height: 1.15;
   text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--heading-face);
+  -webkit-text-stroke: 1.5px #000;
+  paint-order: stroke fill;
+  /* Stepped extrusion down-right, then a hard black edge */
+  text-shadow:
+    1px 1px 0 var(--heading-ext-1),
+    2px 2px 0 var(--heading-ext-1),
+    3px 3px 0 var(--heading-ext-2),
+    4px 4px 0 var(--heading-ext-2),
+    5px 5px 0 var(--heading-ext-3),
+    6px 6px 0 var(--heading-ext-3),
+    7px 7px 0 #000;
+  padding-bottom: 0.15em;
+}
+
+.pageTitle::before,
+.pageTitle::after {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  vertical-align: 0.25em;
+  -webkit-text-stroke: 0;
+  text-shadow: 2px 2px 0 #000;
+  animation: blink 1.2s step-end infinite;
+}
+
+.pageTitle::before {
+  content: "★" / "";
+  margin-right: 0.35em;
+  color: var(--sparkle-1);
+}
+
+.pageTitle::after {
+  content: "★" / "";
+  margin-left: 0.35em;
+  color: var(--sparkle-2);
+  animation-delay: 0.6s;
 }
 
 .pageSubtitle {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 600px;
-  margin-bottom: 3rem;
-  margin-left: auto;
-  margin-right: auto;
+  font-family: var(--font-comic);
+  font-size: 1.1rem;
+  color: var(--on-desktop);
+  line-height: 1.5;
+  max-width: 640px;
+  margin: 0 auto;
   text-align: center;
+  text-shadow: 1px 1px 0 var(--face-darker);
 }
 
-/* ===== Section Heading ===== */
+/* ===== Section heading with an engraved rule ===== */
 .sectionTitle {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px groove var(--face-light);
 }
 
-.sectionTitle::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.55), rgba(var(--accent-2-rgb), 0.25) 40%, var(--border) 80%);
-}
-
-/* ===== Card ===== */
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent);
-}
-
-/* ===== Badge ===== */
+/* ===== Chip: tiny raised label ===== */
 .badge {
   display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  background: var(--accent-light);
-  color: var(--accent);
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 0.15rem 0.55rem;
+  color: var(--text-primary);
+  background: var(--face);
+  box-shadow:
+    inset -1px -1px var(--face-darker),
+    inset 1px 1px var(--face-lighter);
 }
 
-.badge:hover {
-  border-color: var(--accent);
-}
-
-/* ===== Primary Button ===== */
-.btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.85rem;
-  background: var(--gradient-btn);
-  background-size: 160% 100%;
-  background-position: 0% 0%;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border-radius: var(--radius-md);
-  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center;
-  box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.32);
-}
-
-.btnPrimary:hover {
-  background-position: 100% 0%;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.42), 0 0 0 1px rgba(var(--accent-2-rgb), 0.25);
-}
-
-.btnPrimary:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* ===== Secondary Button ===== */
+/* ===== Push buttons ===== */
+.btnPrimary,
 .btnSecondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.85rem;
-  background: transparent;
+  gap: 0.4rem;
+  min-width: 90px;
+  padding: 0.45rem 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
   color: var(--text-primary);
-  font-weight: 600;
-  font-size: 0.95rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  text-decoration: none;
   text-align: center;
+  background: var(--face);
+  box-shadow:
+    inset -1px -1px var(--face-darker),
+    inset 1px 1px var(--face-lighter),
+    inset -2px -2px var(--face-dark),
+    inset 2px 2px var(--face-light);
 }
 
-.btnSecondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-light);
-  transform: translateY(-2px);
+/* Default button gets the heavy black frame */
+.btnPrimary {
+  font-weight: 600;
+  outline: 1px solid var(--face-darker);
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+.btnPrimary:visited,
+.btnSecondary:visited {
+  color: var(--text-primary);
+}
+
+.btnPrimary:active:not(:disabled),
+.btnSecondary:active {
+  box-shadow:
+    inset -1px -1px var(--face-lighter),
+    inset 1px 1px var(--face-darker),
+    inset -2px -2px var(--face-light),
+    inset 2px 2px var(--face-dark);
+  padding: calc(0.45rem + 1px) calc(1.1rem - 1px) calc(0.45rem - 1px) calc(1.1rem + 1px);
+}
+
+.btnPrimary:disabled {
+  color: var(--face-dark);
+  text-shadow: 1px 1px 0 var(--face-lighter);
+  cursor: wait;
+}
+
+/* ===== Retro flourishes ===== */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+.newTag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-style: normal;
+  color: #ffffff;
+  background: var(--hot);
+  padding: 0 0.3rem;
+  vertical-align: middle;
+  transform: rotate(-6deg);
+  text-shadow: none;
+}
+
+.constructionStripe {
+  height: 14px;
+  background: repeating-linear-gradient(-45deg, #000 0 10px, #ffcc00 10px 20px);
+  border: 1px solid #000;
+}
+
+/* The classic rainbow <hr> */
+.rainbowRule {
+  height: 6px;
+  border: none;
+  background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+  box-shadow: 0 1px 0 #000;
+}
+
+@keyframes blink {
+  50% { visibility: hidden; }
+}
+
+/* ===== Entry animation: a chunky, stepped "window opening" ===== */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: popIn 0.25s steps(3) forwards;
   opacity: 0;
 }
 
@@ -280,37 +371,15 @@ a {
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* ===== Scroll reveal ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: calc(var(--i, 0) * 70ms);
+  transition: opacity 0.2s steps(2);
+  transition-delay: calc(var(--i, 0) * 90ms);
 }
 
 .reveal-stagger.reveal-visible > * {
   opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
